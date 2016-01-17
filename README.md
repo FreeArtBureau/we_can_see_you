@@ -1,7 +1,7 @@
-#projet : we can see you
-#semestre : II
-#cours : systèmes graphiques 
-#enseignant : m webster
+projet : we can see you
+semestre : II
+cours : systèmes graphiques 
+enseignant : m webster
 
 
 ###Présentation

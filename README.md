@@ -2,7 +2,7 @@
 
 ###Présentation
 
-L'idée de ce projet réside sur une technique de computer vision qui s'appelle, face detection. À partir d'un programme qui détecte des visages grâce à une caméra, nous allons développer ensemble un petit système graphique interactif. Le système sera présenté lors des portes ouvertes de l'école le 11 et 12 mars 2016.
+L'idée de ce projet réside sur une technique de [computer vision](https://en.wikipedia.org/wiki/Computer_vision) qui s'appelle, [face detection.](https://en.wikipedia.org/wiki/Face_detection) À partir d'un programme qui détecte des visages grâce à une caméra, nous allons développer ensemble un petit système graphique interactif. Le système sera présenté lors des portes ouvertes de l'école le 11 et 12 mars 2016.
 ###Déroulement et informations pratiques.
 
 Pour développer ce système, nous allons continuer en cours avec quelques exercices, notamment comment travailler avec des images en Processing. Vous devez ensuite tous écrire un petit programme qui anime l'image. On abordera ensemble des concepts de l'interaction et de l'animation et on verra comment rassembler vos idées dans un sketch plus complexe qui comprend la technique de la face detection. 

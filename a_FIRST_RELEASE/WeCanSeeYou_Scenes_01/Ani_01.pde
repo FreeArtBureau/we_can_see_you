@@ -53,7 +53,7 @@ class Ani_01 extends Animation {
      anime03();
      }
      */
-    anime01();
+    anime03();
   }
 
   /*
@@ -90,12 +90,12 @@ class Ani_01 extends Animation {
   void anime03() {
     background(0);
     pushMatrix();
-    //translate(width/4.3, 100);
+    translate(width/4.3, 100);
      //translate(width/4, 20);
     loadPixels();
     noStroke();
-    int res = 4;
-    float imgScale = 4;
+    int res = 8;
+    float imgScale = 8;
     for (int x=0; x<saved.width-1; x+=res) {
       for (int y=0; y<saved.height-1; y+=res) {
         int pos = x+y*saved.width;
@@ -104,8 +104,8 @@ class Ani_01 extends Animation {
         float lum = (brightness(c)/255)*fact;
         if (lum >= 6) {  
           fill(c);
-          //ellipse(x*imgScale, y*imgScale, 1*lum, 1*lum);
-           ellipse(x, y, 1*lum, 1*lum);
+          ellipse(x*imgScale, y*imgScale, 1*lum, 1*lum);
+           //ellipse(x, y, 1*lum, 1*lum);
 
           //other possibility
           //image(saved, x, y, 0.9*lum, 0.9*lum);

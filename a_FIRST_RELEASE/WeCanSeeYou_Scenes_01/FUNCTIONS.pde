@@ -85,7 +85,7 @@ void loadSnapShot() {
     SNAPS = loadImage(image_path + (INDEX-1)+".jpg");
   }
   //SNAPS.resize(width, height);
-  SNAPS.resize(width/2, height-100);
+  //SNAPS.resize(width/2, height-100);
   CURRENT_ANIME.setImage(SNAPS); // IMPORTANT !!
 }
 
@@ -170,6 +170,7 @@ void keyPressed() {
 //////////////////////////////////////////////////// IMPORTANT
 void resetAll() {
   background(0); // clear screen
+  ANIMATIONS.clear();
   DRAW_ANIME = false;
   CLOCK.reset();
   MENUS = new Text();
@@ -177,6 +178,7 @@ void resetAll() {
   /////////////////////////////////////////////////  OUR ANIMATION SETUP > ADD new class animations here :–]
   ANIMATIONS.add( new Ani_01() );
   ANIMATIONS.add( new Ani_02() );
+  ANIMATIONS.add( new Ani_03() );
   
   
   //////////////////////////////////////END > NOTHING TO CHANGE HERE...

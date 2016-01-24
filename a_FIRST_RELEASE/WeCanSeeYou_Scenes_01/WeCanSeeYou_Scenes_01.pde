@@ -85,10 +85,14 @@ void draw() {
     //... THEN DO SOMETHING ELSE ///////////////////////////////// THIS IS WHERE WE UPDATE OUR ANIMATIONS
     CURRENT_ANIME.draw();
 
+
+
+    /*
     if (DRAW_INFO) {
         CURRENT_ANIME.showInfo();
         CURRENT_ANIME.showSettings();
     }
+    */
     
   }
 

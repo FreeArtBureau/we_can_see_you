@@ -4,6 +4,7 @@
  *
  * NOTES : FIRST RELEASE
  * Need to correct image ratio / resize & pixelArray readings of saved image. 
+ * Need to add PGraphics for textual info
  *         
  */
 
@@ -87,12 +88,14 @@ void draw() {
 
 
 
-    /*
+    
     if (DRAW_INFO) {
-        CURRENT_ANIME.showInfo();
+        //CURRENT_ANIME.showInfo();
+        //CURRENT_ANIME.displ();
+        //image(pg,0,0);
         CURRENT_ANIME.showSettings();
     }
-    */
+    
     
   }
 

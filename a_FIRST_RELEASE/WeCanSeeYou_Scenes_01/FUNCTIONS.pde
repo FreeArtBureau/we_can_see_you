@@ -28,6 +28,7 @@ String LAST_TAKEN;
 int INDEX;
 boolean SNAP, CAMREADY;
 boolean DRAW_INFO = true;
+//PGraphics pg;
 int ANI_INDEX = 0;
 ////////////////////////////////// GLOBALS FINISHED
 

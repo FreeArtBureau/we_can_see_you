@@ -177,6 +177,8 @@ void resetAll() {
 
   /////////////////////////////////////////////////  OUR ANIMATION SETUP > ADD new class animations here :–]
   ANIMATIONS.add( new Ani_01() );
+  ANIMATIONS.add( new Ani_02() );
+  ANIMATIONS.add( new Ani_03() );
   
   
   //////////////////////////////////////END > NOTHING TO CHANGE HERE...

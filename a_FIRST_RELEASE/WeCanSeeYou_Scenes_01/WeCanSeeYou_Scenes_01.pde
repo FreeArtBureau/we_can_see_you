@@ -87,12 +87,9 @@ void draw() {
     CURRENT_ANIME.draw();
 
 
-
-    
+    // DISPLAY INFO FOR CURRENT ANIMATION
     if (DRAW_INFO) {
-        //CURRENT_ANIME.showInfo();
-        //CURRENT_ANIME.displ();
-        //image(pg,0,0);
+        CURRENT_ANIME.showInfo();
         CURRENT_ANIME.showSettings();
     }
     

@@ -16,8 +16,7 @@ class Text {
     this.x = 0;
     this.y = 0; 
     greeting = newGreeting();
-    f = createFont("FiraSans-ExtraBold", 100);
-    //textFont(f, 100);
+    f = createFont("FiraSans-ExtraBold",100);
     textAlign(CENTER, CENTER);
   }
 

@@ -28,7 +28,7 @@ String LAST_TAKEN;
 int INDEX;
 boolean SNAP, CAMREADY;
 boolean DRAW_INFO = true;
-//PGraphics pg;
+PFont infoFont;
 int ANI_INDEX = 0;
 ////////////////////////////////// GLOBALS FINISHED
 
@@ -39,6 +39,8 @@ int ANI_INDEX = 0;
 void initCamera() {
   imageMode(CENTER);
   rectMode(CENTER);
+  infoFont = createFont("FiraSans-LightItalic",12); // NOTE : NOT THE BEST PLACE FOR THIS.
+  
   SAM_SNAPS = new PImage[NUM_MAX_IMGS]; // saving a max of 500 images
   CAM = new Capture(this, 640/2, 480/2);
 
@@ -118,8 +120,6 @@ void reset() {
   background(0); // clear screen
   DRAW_ANIME = false;
   CLOCK.reset();
-  //MENUS = new Text();
-  //ANI = new Ani_01();
 }
 
 void updateFaceDetectImage() {

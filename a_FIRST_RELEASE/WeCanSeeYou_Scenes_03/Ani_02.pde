@@ -37,10 +37,13 @@ class Ani_02 extends Animation {
 
   void draw() {
     background(255);  
-    // On parcourt l'image grâce à une boucle
+    
+    // RESIZE IMAGE ;–)
     saved.resize(width/2, height/2);
+    // REPOSITION ALSO ;–)
     pushMatrix();
     translate(saved.width/2, saved.height/2);
+    
     for ( int x = 0; x < saved.width; x+=pas) {
       for ( int y = 0; y < saved.height; y+=pas) {
 

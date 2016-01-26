@@ -12,7 +12,6 @@ class Ani_04 extends Animation {
   int cell;
   int randDiff;
 
-
   /////////////////////////// SETUP /////////////////////////////
 
   void setup() {

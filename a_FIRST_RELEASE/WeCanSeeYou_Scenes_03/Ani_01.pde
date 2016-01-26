@@ -7,10 +7,11 @@
 class Ani_01 extends Animation {
 
   ////////////////////////////////////// GLOBALS
-
+  
+  // IMPORTANT NOTE : init all global values in setup()
   PImage saved; // this will keep track of the saved image from camera ;–)
   float x, y;
-  int imageScale = 12;
+  int imageScale;
 
 
   ////////////////////////////////////// CONSTRUCTOR (SETUP)

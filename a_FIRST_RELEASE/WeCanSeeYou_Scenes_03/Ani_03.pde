@@ -7,12 +7,13 @@
 class Ani_03 extends Animation {
 
   PImage saved;       
-  int taillecell = 10; 
+  int taillecell; 
   int colonne, ligne;   
 
   void setup() {
     this.saved = new PImage();
-   
+    taillecell = 10;
+    
     // INFORMATION ON CLASS : QUI & QUOI
     author = "julie laalaj";
     name = "vj pixels";

@@ -179,6 +179,7 @@ void resetAll() {
   /////////////////////////////////////////////////  OUR ANIMATION SETUP > ADD new class animations here :–]
   ANIMATIONS.add( new Ani_01() );
   ANIMATIONS.add( new Ani_02() );
+  ANIMATIONS.add( new Ani_03() );
   
   
   //////////////////////////////////////END > NOTHING TO CHANGE HERE...
@@ -187,7 +188,7 @@ void resetAll() {
   }
 
   //ANI_INDEX = (int)random(2);
-  ANI_INDEX = 1;
+  ANI_INDEX = 2;
   CURRENT_ANIME = ANIMATIONS.get(ANI_INDEX);
   println(ANI_INDEX);
 }

@@ -4,7 +4,8 @@
  07/01/2016
 
  -------------------------
- Sketch : WE CAN SEE YOU_Scenes_01
+ Sketch : WE CAN SEE YOU_Scenes_03
+ AKA : SELFIE WALL
  Sketch Version : 0.5
  Langauge : Processing
  Version : 2.2.1

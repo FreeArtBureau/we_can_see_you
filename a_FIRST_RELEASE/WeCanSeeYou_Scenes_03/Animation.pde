@@ -74,6 +74,7 @@ class Animation {
     
     pushMatrix();
     translate(tx, ty);
+    noStroke();
     fill(0);
     rect(-5, 12, 73, 18);
     rect(-5, 34, 210, 18);

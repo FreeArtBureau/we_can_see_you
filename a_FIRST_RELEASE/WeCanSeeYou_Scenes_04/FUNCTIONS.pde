@@ -25,11 +25,13 @@ int NUM_MAX_IMGS = 500;
 PImage SNAPS;
 String LAST_TAKEN;
 
-int INDEX;
+int INDEX; // index for saved images
 boolean SNAP, CAMREADY;
 boolean DRAW_INFO = true;
 PFont infoFont;
-int ANI_INDEX = 0;
+int ANI_INDEX;
+
+boolean IDLE_MENUS = true;
 ////////////////////////////////// GLOBALS FINISHED
 
 /*
@@ -89,7 +91,7 @@ void loadSnapShot() {
   }
   //SNAPS.resize(width, height);
   //SNAPS.resize(width/2, height-100);
-  CURRENT_ANIME.setImage(SNAPS); // IMPORTANT !!
+  CURRENT_ANIME.setImage(SNAPS); ///////////////// IMPORTANT !!
 }
 
 
@@ -109,8 +111,10 @@ void faceDetection() {
     // IF WE DETECT A FACE THEN ACTIVATE TEXT INTRO
     if (FACES.length >=1) {
       FACE_DETECTED = true;
+      IDLE_MENUS = false;
     } else {
       FACE_DETECTED = false;
+      IDLE_MENUS = true;
       reset();
     }
   }

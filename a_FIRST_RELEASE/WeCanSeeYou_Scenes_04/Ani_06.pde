@@ -79,7 +79,7 @@ class Ani_06 extends Animation{
       for (PVector p : points) {
 
         color pix = _img.get(int(p.x), int(p.y));
-        discSize = 2+brightness(pix)/5;
+        discSize = 2+brightness(pix)/10;
         //discSize = 40;
         fill(pix);
         ellipse(p.x, p.y, discSize, discSize);

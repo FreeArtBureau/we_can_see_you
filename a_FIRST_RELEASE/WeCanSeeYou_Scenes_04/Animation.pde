@@ -1,5 +1,5 @@
 /*
- * Main aniamtion class manager
+ * Main animation class manager
  *
  *
  */

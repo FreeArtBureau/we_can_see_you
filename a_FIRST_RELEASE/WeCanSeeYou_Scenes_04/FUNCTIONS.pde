@@ -181,7 +181,7 @@ void resetAll() {
   MENUS = new Text();
   
   // Choose an animation /////////////////////// NOTE TO SELF : May need to implement memory management here !
-  ANI_INDEX = (int)random(8);
+  //ANI_INDEX = (int)random(9);
   
   /////////////////////////////////////////////////  OUR ANIMATION SETUP > ADD new class animations here :–]
   ANIMATIONS.add( new Ani_01() );
@@ -192,6 +192,7 @@ void resetAll() {
   ANIMATIONS.add( new Ani_06() );
   ANIMATIONS.add( new Ani_07() );
   ANIMATIONS.add( new Ani_08() );
+  ANIMATIONS.add( new Ani_09() );
   
   
   //////////////////////////////////////END > NOTHING TO CHANGE HERE...
@@ -199,7 +200,7 @@ void resetAll() {
     a.setup();
   }
 
-  //ANI_INDEX = 7;
+  ANI_INDEX = 8;
   CURRENT_ANIME = ANIMATIONS.get(ANI_INDEX);
   println(ANI_INDEX);
 }

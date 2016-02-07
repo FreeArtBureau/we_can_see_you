@@ -12,7 +12,7 @@ Je vous communiquerai l'adresse web sur le site du GitHub où se trouvera des ex
 
 ##Date de rendu : 8 février (4 semaines)
 
-##Quelques images test
+###Quelques images test
 ![savedimage_068](https://cloud.githubusercontent.com/assets/1027891/12874523/c33956ea-cdd5-11e5-90bf-49e226d19ad9.png)
 ![savedimage_460](https://cloud.githubusercontent.com/assets/1027891/12874524/c84923ea-cdd5-11e5-9206-f962cf438bd4.png)
 ![savedimage_522](https://cloud.githubusercontent.com/assets/1027891/12874525/cc5c08bc-cdd5-11e5-8a35-bc80e739c4e2.png)

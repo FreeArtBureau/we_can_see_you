@@ -21,7 +21,7 @@ class Ani_02 extends Animation {
     //rectMode(CENTER);
     PixelSize = 2;
     angle = radians(0);  
-    pas =  8;
+    pas =  6;
 
     // INFORMATION ON CLASS : QUI & QUOI
     author = "nicodème";
@@ -31,15 +31,16 @@ class Ani_02 extends Animation {
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
+      
+    // RESIZE IMAGE ;–)
+    saved.resize(width/2, height/2);
   }
 
   /////////////////////////// DRAW ////////////////////////////
 
   void draw() {
     background(255);  
-    
-    // RESIZE IMAGE ;–)
-    saved.resize(width/2, height/2);
+  
     // REPOSITION ALSO ;–)
     pushMatrix();
     translate(saved.width/2, saved.height/2);

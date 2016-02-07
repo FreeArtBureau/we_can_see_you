@@ -22,12 +22,13 @@ class Ani_03 extends Animation {
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
+    // RESIZE IMAGE ;–)
+    saved.resize(width/2, height/2);
   }
 
   void draw() {
     background(0);
-    // RESIZE IMAGE ;–)
-    saved.resize(width/2, height/2);
+  
     colonne = saved.width / taillecell;  
     ligne = saved.height / taillecell;
     

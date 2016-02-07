@@ -26,14 +26,14 @@ class Ani_04 extends Animation {
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
+     // RESIZE IMAGE HERE ;–)
+    saved.resize(width, height);
   }
 
   /////////////////////////// DRAW ////////////////////////////
 
   void draw() {
-    // RESIZE IMAGE ;–)
-    saved.resize(width, height);
-    
+
     // REPOSITION ALSO ;–)
     //pushMatrix();
     //translate(saved.width/2, saved.height/2.5);

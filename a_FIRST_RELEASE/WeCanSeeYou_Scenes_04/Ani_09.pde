@@ -15,6 +15,7 @@ class Ani_09 extends Animation {
     smooth();
     this.saved = new PImage();
 
+    // INFORMATION ON CLASS : QUI & QUOI
     author = "fei gao";
     name = "rond";
   }
@@ -23,13 +24,7 @@ class Ani_09 extends Animation {
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
-    changeSize();
-  }
-
-  void changeSize() {
-    this.saved.resize(400, 400);
-    image(this.saved, 0, 0);
-    background(0);
+    saved.resize(400, 400);
   }
 
 
@@ -37,13 +32,11 @@ class Ani_09 extends Animation {
   void draw() {
 
     pushMatrix();
-    translate(width/2-saved.width/2, 10);
+    translate(width/2-saved.width/2, height/2-saved.height/2);
 
     int x = (int) random (0, saved.width);
     int y = (int) random (0, saved.height);
-
-    int index = y * saved.width + x;
-    color c = saved.pixels[index];
+    color c = saved.get(x, y);
     float d = random(1, 20);
 
     fill(c);

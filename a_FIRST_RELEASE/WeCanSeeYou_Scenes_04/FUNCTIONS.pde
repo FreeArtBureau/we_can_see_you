@@ -200,7 +200,7 @@ void resetAll() {
     a.setup();
   }
 
-  ANI_INDEX = 8;
+  ANI_INDEX = 7;
   CURRENT_ANIME = ANIMATIONS.get(ANI_INDEX);
   println(ANI_INDEX);
 }

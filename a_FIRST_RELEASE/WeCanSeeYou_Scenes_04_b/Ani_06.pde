@@ -35,8 +35,6 @@ class Ani_06 extends Animation {
   ////////// ADDED FUNCTION : loads array for lines
   void initLines() {
     saved.resize(newImageSize, newImageSize);
-    // no need for this function below
-    //image(saved, 0, 0, saved.width, saved.height);
     lines = new PImage[saved.height];
 
     for (int i = 0; i < lines.length; i++) {

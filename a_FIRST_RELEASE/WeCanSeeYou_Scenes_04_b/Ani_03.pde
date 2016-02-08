@@ -27,7 +27,7 @@ class Ani_03 extends Animation {
   void setImage(PImage img) {
     this.saved = img;
      // RESIZE IMAGE HERE ;–)
-    saved.resize(width, height);
+    saved.resize(width/2, height/2);
   }
 
   /////////////////////////// DRAW ////////////////////////////

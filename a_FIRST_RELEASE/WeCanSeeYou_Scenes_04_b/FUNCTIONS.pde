@@ -181,7 +181,7 @@ void resetAll() {
   MENUS = new Text();
   
   // Choose an animation /////////////////////// NOTE TO SELF : May need to implement memory management here !
-  ANI_INDEX = (int)random(5);
+  ANI_INDEX = (int)random(6);
   
   /////////////////////////////////////////////////  OUR ANIMATION SETUP > ADD new class animations here :–]
   ANIMATIONS.add( new Ani_01() );

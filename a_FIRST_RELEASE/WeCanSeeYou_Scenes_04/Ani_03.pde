@@ -1,74 +1,49 @@
 /*
- * Author : Julie Laalaj
+ * Author : Fei Gao
  * Version : 0.1
  *
  */
 
 class Ani_03 extends Animation {
 
-  PImage saved;       
-  int taillecell; 
-  int colonne, ligne;   
+  ///////////////////////////GLOBALS//////////////////////////
+  PImage saved;
 
+  ///////////////////////////SETUP////////////////////////////
   void setup() {
+    noStroke();
+    smooth();
     this.saved = new PImage();
-    taillecell = 10;
-    
+
     // INFORMATION ON CLASS : QUI & QUOI
-    author = "julie laalaj";
-    name = "vj pixels";
+    author = "fei gao";
+    name = "rond";
   }
+
 
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
-    // RESIZE IMAGE ;–)
-    saved.resize(width/2, height/2);
+    saved.resize(400, 400);
   }
 
+
+  /////////////////////////DRAW//////////////////////////
   void draw() {
-    background(0);
-  
-    colonne = saved.width / taillecell;  
-    ligne = saved.height / taillecell;
-    
-    // REPOSITION ALSO ;–)
+
     pushMatrix();
-    translate(saved.width/2, saved.height/2.5);
-    
-    // Begin loop for columns
-    for ( int i = 0; i < colonne; i++) {
-      // Begin loop for rows
-      for ( int j = 0; j < ligne; j++) {
+    translate(width/2-saved.width/2, height/2-saved.height/2);
 
-        float var = sin(frameCount*0.05);
-        int v2 = (int)map(var, -1, 1, 1, 500);
-        int v3 = (int)map(var, -1, 1, 1, width);
+    int x = (int) random (0, saved.width);
+    int y = (int) random (0, saved.height);
+    color c = saved.get(x, y);
+    float d = random(1, 20);
 
-        int x = i*taillecell;  // x position
-        int y = j*taillecell;  // y position
-        int loc = x + y*saved.width;  
-        color c = v2*saved.pixels[loc];  // garder la couleur des pixels
-        
-        // Calculer la position de z en fonction de mouseX et de la luminosité
-        float z = (v3 / float(width)) * brightness(saved.pixels[loc]) - 300.0;
-        // Translate to the location, set fill and stroke, and draw the rect
-        pushMatrix();
-        translate(x+50, y+50, z+100);
-        fill(c/2, 204);
-        noStroke();
-        rectMode(CENTER);
-        rect(0, 0, taillecell, taillecell);
-        popMatrix();
-      }
-    }
+    fill(c);
+    noStroke();
+    ellipse (x, y, d, d);
+
     popMatrix();
-  }
-
-  void keypressed() {
-    if (key=='+') {
-      taillecell+=10;
-    }
   }
 }
 

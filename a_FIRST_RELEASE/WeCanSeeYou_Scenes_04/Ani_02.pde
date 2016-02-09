@@ -4,76 +4,89 @@
  *
  */
 
+//NICODEME KAMIENSKI / YOUR FACE IN 3D FOR FREE
+
 class Ani_02 extends Animation {
+
 
   /////////////////////////// GLOBALS ////////////////////////////
 
   PImage saved; 
-  float angle;
-  int PixelSize; 
-  int pas;
+  float pixelSize; 
+  int taillecell; 
+  int colonne, ligne;
+  float ang;
+  float ZN;
+
 
   /////////////////////////// SETUP ////////////////////////////
 
   void setup() {
     this.saved = new PImage();
     noStroke();
-    //rectMode(CENTER);
-    PixelSize = 2;
-    angle = radians(0);  
-    pas =  6;
+    taillecell = 10;
+    ang = radians(0);
 
-    // INFORMATION ON CLASS : QUI & QUOI
-    author = "nicodème";
-    name = "funDamental Z";
+    author = "NICODÈME";
+    name = "Your face in 3D FOR FREE";
   }
 
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
-      
-    // RESIZE IMAGE ;–)
-    saved.resize(width/2, height/2);
+    saved.resize(width-500, height-240);
+    //saved.filter(GRAY);
   }
+
 
   /////////////////////////// DRAW ////////////////////////////
 
   void draw() {
-    background(255);  
-  
-    // REPOSITION ALSO ;–)
+     background(255);
+    colonne = saved.width / taillecell;  
+    ligne = saved.height / taillecell; 
+ 
     pushMatrix();
-    translate(saved.width/2, saved.height/2);
+    translate(saved.width/2.6, saved.height/6.6);
     
-    for ( int x = 0; x < saved.width; x+=pas) {
-      for ( int y = 0; y < saved.height; y+=pas) {
+    for ( int i = 0; i < colonne; i++) {
+      for ( int j = 0; j < ligne; j++) {
+        // Calculate x & y positions
+        int x = i*taillecell;
+        int y = j*taillecell;
+        //Calculate location in image
+        int loc = x+y*saved.width;
+        
+        // Grab color at that location
+        //color c = saved.pixels[loc];
+        color c = saved.get(x,y);
 
+        float fact = map(sin(frameCount*0.025), -1, 1, 50, 360);
+        //pixelSize = sin(frameCount*0.015) *  brightness(c);
+        pixelSize = (brightness(c)/255) * fact;
+        pixelSize = map(pixelSize, 0, 255, 0.5, 24);
 
-        float z = sin(angle*0.05) *  brightness(saved.get(x, y)) - 100.0;
-        //float z = sin(angle*0.1) *  saturation(saved.get(x, y)) - 90.0;
-        //float z = sin(angle*0.15) *  hue(saved.get(x, y)) - 100.0;
-        //float z = sin(angle*0.15) *  blue(saved.get(x, y)) - 90.0;
+        // NOISE SHIT
+        // Noise Shit : Look further into what is happening here. It's a smooth nois algo ;–)
+        float noiseTurbo = map(cos(frameCount*0.015), -1, 1, 0.0001, 0.015);
+        float noiseAmm = map(sin(frameCount*0.009), -1, 1, 1, 250);
 
-        // on récupère  la couleur du pixel en fonction des variables x & y
-        int pixelColor = saved.get(x, y);
+        ang = frameCount * 0.005; //if this number gets bigger the movement will be more nervous... play around!
+        float rad = width/2;
 
-        fill(pixelColor);
+        float nx = (x + cos(ang) * rad) * noiseTurbo;
+        float ny = (y + sin(ang) * rad) * noiseTurbo;
+        ZN = noise(nx, ny) * noiseAmm;
 
-        //Added this 26/01/16 : (MW)
-        PixelSize = (int)map(brightness(pixelColor), 0, 255, 1, 10);
-
-        // On se sert de translate pour positionner nos rectangles/pixels
         pushMatrix();
-        translate(x, y, z); // Notez bien l'axe z (profondeur)
-
-        ellipse(0, 0, PixelSize, PixelSize);
-        //box(pas,pas,z); // Forme 3D
+        translate(x, y, ZN); // Notez bien l'axe z (profondeur)
+        fill(c);
+        noStroke();
+        ellipse(0, 0, pixelSize, pixelSize);
         popMatrix();
       }
     }
-
-    // mouvement auto
-    angle+=0.5; 
+   
     popMatrix();
   }
 }

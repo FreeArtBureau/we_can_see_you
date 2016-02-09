@@ -170,6 +170,10 @@ void keyPressed() {
 
     }
   }
+  
+  if(key == 's') {
+   saveFrame(CURRENT_ANIME.author+"savedImage_###.png"); 
+  }
 }
 
 //////////////////////////////////////////////////// IMPORTANT
@@ -189,6 +193,7 @@ void resetAll() {
   ANIMATIONS.add( new Ani_03() );
   ANIMATIONS.add( new Ani_04() );
   ANIMATIONS.add( new Ani_05() );
+  ANIMATIONS.add( new Ani_06() );
   
   
   //////////////////////////////////////END > NOTHING TO CHANGE HERE...
@@ -196,7 +201,7 @@ void resetAll() {
     a.setup();
   }
 
-  ANI_INDEX = 10;
+  ANI_INDEX = 1;
   CURRENT_ANIME = ANIMATIONS.get(ANI_INDEX);
   println(ANI_INDEX);
 }

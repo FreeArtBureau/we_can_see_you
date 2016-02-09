@@ -20,8 +20,8 @@ class Ani_08 extends Animation {
     taille = 25;
 
     // INFORMATION ON CLASS : QUI & QUOI
-    author = "mark webster";
-    name = "repeat";
+    author = "hadrien";
+    name = "nawak";
   }
 
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
@@ -36,7 +36,7 @@ class Ani_08 extends Animation {
 
     background(0);
     pushMatrix();
-    translate(100,100);
+    translate(100, 100);
     for (int y=0; y<saved.height; y+=50) {
       for (int x=0; x<saved.width; x+=50) {
         pushMatrix();
@@ -44,12 +44,11 @@ class Ani_08 extends Animation {
         rotate(sin(frameCount*0.05)*100);
         PImage grab = saved.get(x, y, taille, taille);
 
-        image(grab,0,0);
+        image(grab, 0, 0);
         popMatrix();
       }
     }
-        popMatrix();
+    popMatrix();
   }
-
 }
 

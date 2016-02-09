@@ -24,7 +24,7 @@ class Ani_03 extends Animation {
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
-    saved.resize(400, 400);
+    saved.resize(600, 600);
   }
 
 
@@ -32,17 +32,19 @@ class Ani_03 extends Animation {
   void draw() {
 
     pushMatrix();
-    translate(width/2-saved.width/2, height/2-saved.height/2);
+    translate(width/2-saved.width/2, height/2.2-saved.height/2);
 
-    int x = (int) random (0, saved.width);
-    int y = (int) random (0, saved.height);
-    color c = saved.get(x, y);
-    float d = random(1, 20);
+    for (int i=0; i<20; i++) {
 
-    fill(c);
-    noStroke();
-    ellipse (x, y, d, d);
+      int x = (int) random (0, saved.width);
+      int y = (int) random (0, saved.height);
+      color c = saved.get(x, y);
+      float d = random(0.1, 12);
 
+      fill(c);
+      noStroke();
+      ellipse (x, y, d, d);
+    }
     popMatrix();
   }
 }

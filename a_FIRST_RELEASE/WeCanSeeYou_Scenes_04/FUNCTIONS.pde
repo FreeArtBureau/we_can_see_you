@@ -194,6 +194,7 @@ void resetAll() {
   ANIMATIONS.add( new Ani_04() );
   ANIMATIONS.add( new Ani_05() );
   ANIMATIONS.add( new Ani_06() );
+  ANIMATIONS.add( new Ani_07() );
   
   
   //////////////////////////////////////END > NOTHING TO CHANGE HERE...
@@ -201,7 +202,7 @@ void resetAll() {
     a.setup();
   }
 
-  ANI_INDEX = 1;
+  ANI_INDEX = 6;
   CURRENT_ANIME = ANIMATIONS.get(ANI_INDEX);
   println(ANI_INDEX);
 }

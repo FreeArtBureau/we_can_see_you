@@ -34,13 +34,13 @@ class Ani_01 extends Animation{
     //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
+    saved.resize(width, height);
   }
 
   ///////////////////// 
 
   void draw() {
     background(255);
-    saved.resize(width, height);
     mySample.emitSample();
     mySample.render(saved);
   }
@@ -59,7 +59,7 @@ class Ani_01 extends Animation{
   class RandomSample {
 
     int maxPoints; // number of total points to draw
-    int numCandidates = 400; // number of candidate points to try
+    int numCandidates = 200; // number of candidate points to try
     ArrayList <PVector> points;
     PVector origin = new PVector();
     float discSize;
@@ -79,7 +79,7 @@ class Ani_01 extends Animation{
       for (PVector p : points) {
 
         color pix = _img.get(int(p.x), int(p.y));
-        discSize = 2+brightness(pix)/10;
+        discSize = 2+brightness(pix)/6;
         //discSize = 40;
         fill(pix);
         ellipse(p.x, p.y, discSize, discSize);

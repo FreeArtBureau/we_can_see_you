@@ -9,8 +9,7 @@ class Ani_05 extends Animation {
   ////////////////////////////////////// GLOBALS
 
   PImage saved; // this will keep track of the saved image from camera ;–)
- // PImage[] mesImg = new PImage[3]; 
-   PImage deal;
+  PImage deal;
   int x, y;
   int xm, ym;
   int xi;

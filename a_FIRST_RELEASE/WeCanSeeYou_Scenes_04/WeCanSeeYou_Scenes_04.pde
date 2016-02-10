@@ -4,7 +4,8 @@
  *
  * NOTES : FIRST RELEASE
  * Implementing idle menu where all faces shall be shown - need some kind of transitional timer ;–)
- * Think about a GIF animated version too ;–)        
+ * Think about a GIF animated version too ;–) 
+ * Add RandomSelection algo 
  */
 
 /////////////////////////// GLOBALS ////////////////////////////

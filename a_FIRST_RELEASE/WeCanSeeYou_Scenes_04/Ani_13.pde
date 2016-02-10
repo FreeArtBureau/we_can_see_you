@@ -31,8 +31,9 @@ class Ani_13 extends Animation {
 
   void draw() {
     background(0);
-    //frameRate(5);
-    //push
+
+    pushMatrix();
+    translate(73, -90);
 
     // float mouseXVar = map(sin(frameCount*0.05), -1, 1, 0.05, 3);
 
@@ -48,8 +49,8 @@ class Ani_13 extends Animation {
 
         // NOISE SHIT ADDED BY MW
         // Noise Shit : Smooth noise algo ;–)
-        float noiseTurbo = map(cos(frameCount*0.015), -1, 1, 0.0001, 0.015);
-        float noiseAmm = map(sin(frameCount*0.009), -1, 1, 1, 250);
+        float noiseTurbo = map(cos(frameCount*0.015), -1, 1, 0.0001, 0.010);
+        float noiseAmm = map(sin(frameCount*0.009), -1, 1, 100, 300);
 
         float ang = frameCount * 0.005; //if this number gets bigger the movement will be more nervous... play around!
         float rad = width/2;
@@ -57,7 +58,7 @@ class Ani_13 extends Animation {
         float nx = (x + cos(ang) * rad) * noiseTurbo;
         float ny = (y + sin(ang) * rad) * noiseTurbo;
         float mouseXVar = noise(nx, ny) * noiseAmm;
-        
+
         ////////////////////////////////////////////////// END OF NOISE
 
         //Récupérer la couleur
@@ -88,7 +89,7 @@ class Ani_13 extends Animation {
         line(posX-d1, posY+d1, posX+gridX-d2, posY+d2);
       }
     }
-    // popMatrix();
+    popMatrix();
   }
 }
 

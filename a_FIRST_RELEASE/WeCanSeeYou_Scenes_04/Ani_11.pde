@@ -8,7 +8,8 @@ class Ani_11 extends Animation {
 
   ////////////////////////////////////// GLOBALS
 
-  PImage saved; // this will keep track of the saved image from camera ;–)
+  PImage saved; 
+  PImage pix;
   // Changer cette valeur et observer si qui se passe
   int pixelSize;
   int randomPosition;
@@ -23,6 +24,7 @@ class Ani_11 extends Animation {
     x = 0;
     y = 0;
     this.saved = new PImage();
+    this.pix = new PImage();
     y=0;
     yPosOff = 0;
 
@@ -56,7 +58,7 @@ class Ani_11 extends Animation {
     int yPos = (int)random(0, saved.height);
 
     // Attribuer ces coordonnées à pix (qui est une variable du type PImage)
-    PImage pix = saved.get(xPos, yPos, pixelSize, pixelSize);
+    pix = saved.get(xPos, yPos, pixelSize, pixelSize);
 
     yPosOff = 10;
 

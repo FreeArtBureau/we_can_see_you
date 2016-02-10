@@ -6,18 +6,18 @@
 
 class Ani_08 extends Animation {
 
-  ////////////////////////////////////// GLOBALS
-
-  // IMPORTANT NOTE : init all global values in setup()
-  PImage saved; // this will keep track of the saved image from camera ;–)
+  PImage saved;
+  PImage grab; 
   int  taille;
+  float theta;
 
   ////////////////////////////////////// CONSTRUCTOR (SETUP)
 
   void setup() {
-
     this.saved = new PImage();
-    taille = 25;
+    this.grab = new PImage();
+    taille = 5;
+    theta = radians(0);
 
     // INFORMATION ON CLASS : QUI & QUOI
     author = "hadrien";
@@ -36,15 +36,19 @@ class Ani_08 extends Animation {
 
     background(0);
     pushMatrix();
-    translate(100, 100);
+    translate(width/1.8-saved.width/2, height/2-saved.height/2);
+
+    //theta = sin(frameCount*0.05)*100;
+
     for (int y=0; y<saved.height; y+=50) {
       for (int x=0; x<saved.width; x+=50) {
         pushMatrix();
         translate(x, y);
-        rotate(sin(frameCount*0.05)*100);
-        PImage grab = saved.get(x, y, taille, taille);
+        int BIGGER = (int)cos(frameCount*0.1)*40;
+        //rotate(radians(theta));
+        grab = saved.get(0, 0, taille, taille);
 
-        image(grab, 0, 0);
+        image(grab, 0, 0, taille+BIGGER, taille+BIGGER);
         popMatrix();
       }
     }

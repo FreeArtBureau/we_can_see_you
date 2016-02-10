@@ -7,42 +7,52 @@
 
 class Ani_04 extends Animation {
 
-  /////////////////////////// GLOBALS ////////////////////////////
-  PImage saved; 
-  int pixelSize;
-  int x;
-  float y;
 
-  /////////////////////////// SETUP /////////////////////////////
+  /////////////////////////// GLOBALS ////////////////////////////
+  PImage saved;
+  PImage pix;
+  int pixelSize;
+  int  pixelSizeh;
+  float x, y;
 
   void setup() {
+    background(255);
     noStroke();
-    this.saved = new PImage();
     y=0;
-    //pixelSize = 350;
+    x=0;
+    pixelSize =0;
+    this.saved = new PImage();
 
     // INFORMATION ON CLASS : QUI & QUOI
     author = "marine leleu";
-    name = "décomposition";
+    name = "destructuration";
   }
 
   //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
+    // RESIZE IMAGE HERE ;–)
+    saved.resize(width/4, height/4);
   }
 
   /////////////////////////// DRAW ////////////////////////////
   void draw() {
-    pixelSize = saved.width;
-    int xPos = (int)random(saved.width);
-    int yPos = (int)random(saved.height);
+    pushMatrix();
+    translate(width/2, 0); // cadrage
 
-    PImage pix = saved.get(xPos, yPos, saved.width, pixelSize/10);
 
-    for ( x=30; x<width+pixelSize; x+=80) {
-      image(pix, x, y);
-    }
-    y+=random(10.10);
+    pixelSize = (int)random(73, 563);
+    pixelSizeh = (int)random(5, 30);
+    
+    int xPos = (int)random(10, saved.width-pixelSize);
+    int yPos = (int)random(10, saved.height-pixelSizeh);
+    
+    pix = saved.get(xPos, yPos, pixelSize, pixelSizeh);
+
+    image(pix, x, y);
+    popMatrix();
+
+    y+=random(5);
   }
 }
 

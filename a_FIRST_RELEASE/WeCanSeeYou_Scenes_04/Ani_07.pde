@@ -13,7 +13,6 @@ PImage saved;
 /////////////////////////// SETUP ////////////////////////////
 
 void setup() {
-  frameRate(100);
   imageMode(CENTER);
   
 //  background(0);

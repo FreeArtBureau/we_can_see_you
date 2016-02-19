@@ -35,7 +35,6 @@ class Ani_06 extends Animation {
   /////////////////////////// DRAW ////////////////////////////
 
   void draw() { 
-    frameRate(10);
     pix1 = saved.get(110, 140, pixelSize, pixelSize);
     pix2 = saved.get(285, 130, pixelSize, pixelSize); 
     pix3 = saved.get(200, 215, pixelSize, pixelSize); 

@@ -28,7 +28,7 @@ class Text {
     x=_x;
     y =_y;
     textFont(f, s);
-    fill(255, 0, 255);
+    //fill(255, 0, 255);
     text(greeting, x, y);
   }
 
@@ -40,7 +40,7 @@ class Text {
     x=_x;
     y =_y;
     textFont(f, s);
-    fill(255, 0, 255);
+    //fill(255, 0, 255);
     text(tx, x, y);
   }
 

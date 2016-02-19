@@ -17,7 +17,7 @@ class Ani_14 extends Animation {
     smooth();
     this.saved = new PImage();
     taillePixel = 10;
-    pas = 15;
+    pas = 30;
     SEED = (int)random(100);
 
 
@@ -44,9 +44,9 @@ class Ani_14 extends Animation {
       for (int y=0; y<height; y+=pas) {
         color rouge = saved.get(x, y); 
         fill(rouge);
-        taillePixel = (int)random(20, 80);
+        taillePixel = (int)random(pas, 60);
  
-        ellipse(x, y, taillePixel+1, taillePixel+1);
+        ellipse(x, y, taillePixel, taillePixel);
       }
     }
   }

@@ -26,7 +26,7 @@ void setup() {
   applet = this;
   initCamera();
   // Init timer with a maximum time (First & second actions)
-  CLOCK = new Timer(45000); // 45 seconds or 45000 milliseconds
+  CLOCK = new Timer(35000); // 35 seconds or 35000 milliseconds
   // Init text
   MENUS = new Text();
   IDLE_MENU_TEXT = new Text();

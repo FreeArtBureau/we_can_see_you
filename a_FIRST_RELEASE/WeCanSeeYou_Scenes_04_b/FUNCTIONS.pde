@@ -10,6 +10,10 @@
 import gab.opencv.*;
 import java.awt.*;
 import processing.video.*;
+import ddf.minim.*;
+Minim minim;
+AudioInput in;
+
 
 Capture CAM;
 OpenCV FACE_DETECT;
@@ -21,7 +25,9 @@ boolean FACE_DETECTED = false;
 boolean DRAW_ANIME = false;
 
 PImage[] SAM_SNAPS;
-int NUM_MAX_IMGS = 500;
+PImage[] FACE_MENU;
+int FACE_MENU_INDEX;
+int NUM_MAX_IMGS = 700;
 PImage SNAPS;
 String LAST_TAKEN;
 
@@ -30,6 +36,9 @@ boolean SNAP, CAMREADY;
 boolean DRAW_INFO = true;
 PFont infoFont;
 int ANI_INDEX;
+int SEQUENCE;
+int[] RAND_SEQ;
+int CURRENT_SEQ_INDEX;
 
 boolean IDLE_MENUS = true;
 ////////////////////////////////// GLOBALS FINISHED
@@ -41,9 +50,15 @@ boolean IDLE_MENUS = true;
 void initCamera() {
   imageMode(CENTER);
   rectMode(CENTER);
-  infoFont = createFont("FiraSans-LightItalic",12); // NOTE : NOT THE BEST PLACE FOR THIS.
+  infoFont = createFont("FiraSans-LightItalic", 12); // NOTE : NOT THE BEST PLACE FOR THIS.
   
+  minim = new Minim(this);
+  minim.debugOn();
+
   SAM_SNAPS = new PImage[NUM_MAX_IMGS]; // saving a max of 500 images
+  FACE_MENU = new PImage[NUM_MAX_IMGS];
+  FACE_MENU_INDEX = 0;
+
   CAM = new Capture(this, 640/2, 480/2);
 
   // ADD FaceDetect
@@ -78,6 +93,19 @@ void saveFace() {
   SNAP = true;
   if (SNAP) println("PHOTO TAKEN ;–)");
   println("SAM_SNAPS["+INDEX+"]");
+
+  // ADDED 19.02.2016 /////////////////////////////////////////
+  // This saves faces for presenting to screen
+  FACE_MENU[FACE_MENU_INDEX] = SNAPS;
+  for (int i=0; i<FACE_MENU.length; i++) {
+    FACE_MENU[i] = loadImage(image_path + (INDEX-1)+".jpg");
+  }
+  if (FACE_MENU_INDEX<FACE_MENU.length) {
+    FACE_MENU_INDEX++;
+    println("FACE MENU IMAGE = "+FACE_MENU_INDEX);
+  }
+  ///////////////////////////////////////// MAY NOT IMPLEMENT THIS - NEEDS TESTING
+  
 }
 
 /*
@@ -89,6 +117,7 @@ void loadSnapShot() {
   if (SAM_SNAPS.length>0) {
     SNAPS = loadImage(image_path + (INDEX-1)+".jpg");
   }
+
   //SNAPS.resize(width, height);
   //SNAPS.resize(width/2, height-100);
   CURRENT_ANIME.setImage(SNAPS); ///////////////// IMPORTANT !!
@@ -157,8 +186,7 @@ void keyPressed() {
       ANI_INDEX++;
       println(ANI_INDEX);
       println(ANIMATIONS.indexOf(CURRENT_ANIME));
-          CURRENT_ANIME = ANIMATIONS.get( (ANIMATIONS.indexOf(CURRENT_ANIME)+1) );
-
+      CURRENT_ANIME = ANIMATIONS.get( (ANIMATIONS.indexOf(CURRENT_ANIME)+1) );
     }
   }
 
@@ -166,26 +194,19 @@ void keyPressed() {
     if (ANI_INDEX > 0) {
       ANI_INDEX--;
       println(ANI_INDEX);
-                CURRENT_ANIME = ANIMATIONS.get( (ANIMATIONS.indexOf(CURRENT_ANIME)-1) );
-
+      CURRENT_ANIME = ANIMATIONS.get( (ANIMATIONS.indexOf(CURRENT_ANIME)-1) );
     }
   }
-    if(key == 's') {
-   saveFrame(CURRENT_ANIME.author+"savedImage_###.png"); 
+
+  if (key == 's') {
+    saveFrame(CURRENT_ANIME.author+"savedImage_###.png");
   }
 }
 
 //////////////////////////////////////////////////// IMPORTANT
-void resetAll() {
-  background(0); // clear screen
+
+void initNewAnimationSequence() {
   ANIMATIONS.clear();
-  DRAW_ANIME = false;
-  CLOCK.reset();
-  MENUS = new Text();
-  
-  // Choose an animation /////////////////////// NOTE TO SELF : May need to implement memory management here !
-  //ANI_INDEX = (int)random(6);
-  
   /////////////////////////////////////////////////  OUR ANIMATION SETUP > ADD new class animations here :–]
   ANIMATIONS.add( new Ani_01() );
   ANIMATIONS.add( new Ani_02() );
@@ -200,15 +221,73 @@ void resetAll() {
   ANIMATIONS.add( new Ani_11() );
   ANIMATIONS.add( new Ani_12() );
   ANIMATIONS.add( new Ani_13() );
-  
-  
+}
+
+// GENERATES A NEW RANDOM SEQUENCE FOR ANIMATION PLAY. 
+// EACH SEQUENCE IS UNIQUE & NEVER REPEATS AN ANIMATION ;–)
+// SEE checkRandom() FUNCTION BELOW FOR IMPLEMENTING THIS.
+void generateRandomSequence() {
+  CURRENT_SEQ_INDEX = 0;
+  int animationsMax = ANIMATIONS.size();
+  SEQUENCE = animationsMax;
+  println("Total Animations = "+SEQUENCE); // DEBUG
+  RAND_SEQ = new int[ SEQUENCE-1 ];
+
+  int index = 0;      
+  while (index<RAND_SEQ.length) {
+    int num = (int)random(SEQUENCE);
+    if (checkRandom(num)) {
+      RAND_SEQ[index] = num;
+      index++;
+    }
+  }
+  println(" \n/////////////////////////////////////////////////////////////////");
+  for (int i = 0; i < RAND_SEQ.length; ++i) {
+    println("Random Animation Sequence ="+RAND_SEQ[i]);
+  }
+   println(" \n/////////////////////////////////////////////////////////////////");
+}
+////////////////////////////////////////////////////////////////////
+void resetAll() {
+  background(0); // clear screen
+  //ANIMATIONS.clear();
+  DRAW_ANIME = false;
+  CLOCK.reset();
+  MENUS = new Text();  
+
+
+  // Choose an animation /////////////////////// NOTE TO SELF : May need to implement memory management here !
+
+  //ANI_INDEX = RAND_SEQ[ CURRENT_SEQ_INDEX ];
+  ANI_INDEX = 8; // DEBUGGING
+
+  CURRENT_ANIME = ANIMATIONS.get(ANI_INDEX);
+  println("Current animation chosen : "+ANI_INDEX);
+
   //////////////////////////////////////END > NOTHING TO CHANGE HERE...
   for (Animation a : ANIMATIONS) {
     a.setup();
   }
+  //println("The Animation Array Size is ="+ANIMATIONS.size()); // DEBUG
 
-  ANI_INDEX = 12;
-  CURRENT_ANIME = ANIMATIONS.get(ANI_INDEX);
-  println(ANI_INDEX);
+  // CHECK TO SEE IF CURRENT RANDOM SEQUENCE HAS FINISHED. IF YES, GENERATE ANOTHER NEW SEQUENCE
+  if (CURRENT_SEQ_INDEX<RAND_SEQ.length-1) {
+    CURRENT_SEQ_INDEX++;
+  } else {
+    generateRandomSequence();
+  }
+}
+
+/**
+ * Method for checking same int numbers
+ * @param   num   the int number to check
+ * @return        returns true or false
+ */
+boolean checkRandom(int num) {
+  for (int i=0; i<RAND_SEQ.length; i++) {
+    if (num == RAND_SEQ[i]) return false;
+    if (num == 0) return false; // never choose zero (could be handy !)
+  }
+  return true;
 }
 

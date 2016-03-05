@@ -53,6 +53,10 @@ class Ani_04 extends Animation {
     popMatrix();
 
     y+=random(5);
+    
+    if(y>height) {
+     y = 0; 
+    }
   }
 }
 

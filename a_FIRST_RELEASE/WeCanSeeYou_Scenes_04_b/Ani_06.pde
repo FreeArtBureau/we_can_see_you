@@ -19,7 +19,7 @@ class Ani_06 extends Animation {
   ///////////////////////////  SETUP  ////////////////////////////
   void setup() {
 
-    frameRate(30);
+    //frameRate(30);
 
     this.saved = new PImage();
 

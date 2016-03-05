@@ -16,9 +16,10 @@ class Ani_10 extends Animation {
   void setImage(PImage img) {
     this.saved = img;
     saved.resize(width, height); //taille de l'écran
-
+    pushStyle();
     //image(saved, 0, 0);
     tint(200, 0, 150, 110);
+    popStyle();
   }
 
   void draw() {

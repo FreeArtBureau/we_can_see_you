@@ -3,8 +3,6 @@
  * Version 0.1
  */
 
-import ddf.minim.*;
-
 
 class Ani_09 extends Animation {
 
@@ -12,13 +10,13 @@ class Ani_09 extends Animation {
   PImage saved; // Déclaration d’une variable du type PImage
   int xPas;
   int yPas;
-  Minim minim;
-  AudioInput in;
+//  Minim minim;
+ // AudioInput in;
 
   /////////////////////////// SETUP ////////////////////////////
   void setup() {
-    minim = new Minim(this);
-    minim.debugOn();
+    //minim = new Minim(this);
+    //minim.debugOn();
     in = minim.getLineIn(Minim.STEREO, 512);
 
     background(0);
@@ -45,7 +43,7 @@ class Ani_09 extends Animation {
   /////////////////////////// DRAW ////////////////////////////
   void draw() {
     background(0);
-    frameRate(15);
+    //frameRate(15);
     float sonMix = in.mix.get(0)*33;
 
     pushMatrix();

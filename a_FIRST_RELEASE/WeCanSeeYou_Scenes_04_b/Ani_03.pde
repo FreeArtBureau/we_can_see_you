@@ -35,8 +35,8 @@ class Ani_03 extends Animation {
   void draw() {
 
     // REPOSITION ALSO ;–)
-    //pushMatrix();
-    //translate(saved.width/2, saved.height/2.5);
+    pushMatrix();
+    translate(saved.width/2, saved.height/2.5);
     
     cell = (int)random(30, 130);
     int x = (int)random(1, saved.width-cell);
@@ -48,7 +48,7 @@ class Ani_03 extends Animation {
     int yDiff = (int)random(-randDiff, randDiff);
 
     image(newImg, x+xDiff, y+yDiff);
-    //popMatrix();
+    popMatrix();
   }
 }
 

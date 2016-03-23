@@ -10,9 +10,9 @@
 import gab.opencv.*;
 import java.awt.*;
 import processing.video.*;
-import ddf.minim.*;
+/*import ddf.minim.*;
 Minim minim;
-AudioInput in;
+AudioInput in;*/
 
 
 Capture CAM;
@@ -52,8 +52,8 @@ void initCamera() {
   rectMode(CENTER);
   infoFont = createFont("FiraSans-LightItalic", 12); // NOTE : NOT THE BEST PLACE FOR THIS.
   
-  minim = new Minim(this);
-  minim.debugOn();
+  //minim = new Minim(this);
+  //minim.debugOn();
 
   SAM_SNAPS = new PImage[NUM_MAX_IMGS]; // saving a max of 500 images
   FACE_MENU = new PImage[NUM_MAX_IMGS];
@@ -220,7 +220,6 @@ void initNewAnimationSequence() {
   ANIMATIONS.add( new Ani_10() );
   ANIMATIONS.add( new Ani_11() );
   ANIMATIONS.add( new Ani_12() );
-  ANIMATIONS.add( new Ani_13() );
 }
 
 // GENERATES A NEW RANDOM SEQUENCE FOR ANIMATION PLAY. 
@@ -258,8 +257,8 @@ void resetAll() {
 
   // Choose an animation /////////////////////// NOTE TO SELF : May need to implement memory management here !
 
-  //ANI_INDEX = RAND_SEQ[ CURRENT_SEQ_INDEX ];
-  ANI_INDEX = 8; // DEBUGGING
+  ANI_INDEX = RAND_SEQ[ CURRENT_SEQ_INDEX ];
+  //ANI_INDEX = 9; // DEBUGGING
 
   CURRENT_ANIME = ANIMATIONS.get(ANI_INDEX);
   println("Current animation chosen : "+ANI_INDEX);

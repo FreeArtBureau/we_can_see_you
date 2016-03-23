@@ -67,7 +67,7 @@ void draw() {
     if (FACE_MENU_INDEX>0) {
       image(FACE_MENU[FACE_MENU_INDEX], width/2, height/1.5);
       fill(0, 0, 255, 73);
-      rect(width/2, height/1.5, 100, 100);
+      rect(width/2, height/1.5, FACE_MENU[FACE_MENU_INDEX].width, FACE_MENU[FACE_MENU_INDEX].height);
     }
   }
 
@@ -85,13 +85,13 @@ void draw() {
     if (CLOCK.sequence(0, 2000)) {
       // Display first text in center with font size 73
       fill(255, 0, 255);
-      MENUS.displayGreeting(width/2, height/2.3, 103);
+      MENUS.displayGreeting(width/2, height/2.3, 133);
     }
 
     if (CLOCK.sequence(2000, 3000)) {
       // Display next text
       fill(255, 0, 255);
-      MENUS.displayText(width/2, height/2.3, 33, "PLEASE STAY THERE....");
+      MENUS.displayText(width/2, height/2.3, 73, "NE BOUGEZ PAS....\n ET SOURIEZ ;–)");
       CAMREADY = true; // Get camera ready to take picture ;–)
     }
 

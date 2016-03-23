@@ -85,13 +85,13 @@ void draw() {
     if (CLOCK.sequence(0, 2000)) {
       // Display first text in center with font size 73
       fill(255, 0, 255);
-      MENUS.displayGreeting(width/2, height/2.3, 103);
+      MENUS.displayGreeting(width/2, height/2.3, 133);
     }
 
     if (CLOCK.sequence(2000, 3000)) {
       // Display next text
       fill(255, 0, 255);
-      MENUS.displayText(width/2, height/2.3, 33, "PLEASE STAY THERE....");
+      MENUS.displayText(width/2, height/2.3, 73, "NE BOUGEZ PAS....\n ET SOURIEZ ;–)");
       CAMREADY = true; // Get camera ready to take picture ;–)
     }
 

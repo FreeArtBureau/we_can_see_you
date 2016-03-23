@@ -1,41 +1,44 @@
-
-class Ani_10 extends Animation {
+class Ani_10  extends Animation {
 
   PImage saved;
-  int cell;
-  int randDiff = 100;
+  float x, y;
+  float pas;
 
-  void setup() {
+  void setup () {
+
     this.saved = new PImage();
+    background (255);
     smooth();
+    pas =2;
 
     // INFORMATION ON CLASS : QUI & QUOI
-    author = "nadia bellalij";
-    name = "pink";
+    author = "My-Lan Thuong";
+    name = "matrix";
   }
+  //////////////////////////////////////////// IMPORTANT TO ADD TO ALL CLASSES
   void setImage(PImage img) {
     this.saved = img;
-    saved.resize(width, height); //taille de l'écran
-    pushStyle();
-    //image(saved, 0, 0);
-    tint(200, 0, 150, 110);
-    popStyle();
+    saved.resize(width/2, height/2);
+    //saved.filter (THRESHOLD, 0.85);
   }
 
   void draw() {
-
-    for (int i=0; i<8; i++) {
-      cell = (int)random(5, 60);
-      int x = (int)random(1, saved.width-cell);
-      int y = (int) random(1, saved.height-cell);
-
-      PImage newImg = saved.get(x, y, cell, cell);
-
-      int xDiff = (int)random(50, 50);
-      int yDiff = (int)random(50, 50);
-
-      image(newImg, x+xDiff, y+yDiff);
-    }
+    pushMatrix();
+    translate(width/2-saved.width/2, height/2-saved.height/2);
+    background (255);
+    for (int x=0; x<saved.width; x+=pas) {
+      for (int y=0; y<saved.height; y+=pas) {
+        color c = saved.get (x, y);
+        fill (c);
+        noStroke();
+        textSize(5+pas);
+        text ((char)random(48, 50), x+pas, y+pas);
+      }
+    } 
+    //filter (THRESHOLD, 0.85);
+    pas +=0.04;
+    popMatrix();
   }
+
 }
 
